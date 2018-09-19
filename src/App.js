@@ -44,7 +44,8 @@ togglePersonsHandler = () => {
 
   render() {
     const style = {
-      backroundColor: 'white',
+      backgroundColor: 'green',
+      color: 'white',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
@@ -65,17 +66,26 @@ togglePersonsHandler = () => {
         })}
         </div>
       );
+      style.backgroundColor = 'red';
+
+    }
+
+    const classes = [];
+    if (this.state.persons.length <= 2){
+      classes.push('red');
+    }
+    if (this.state.persons.length <= 1){
+      classes.push('bold');
     }
 
     return (
       <div className="App">
         <h1>hi im a react developer</h1>
-        <p>This is really working</p>
+        <p className={classes.join(' ')}>This is really working</p>
         <button
           style={style}
-          onClick={this.togglePersonsHandler}>Switch Name</button>
+          onClick={this.togglePersonsHandler}>toggle cards</button>
         {persons}
-
       </div>
     );
     // return React.createElement('div', null, 'h1', 'hi im a react developer')
